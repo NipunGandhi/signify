@@ -139,7 +139,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
         children: [
           AvatarGlow(
             animate: _isListening,
-            glowColor: Theme.of(context).primaryColor,
+            glowColor: Colors.orange,
             endRadius: 55.0,
             duration: const Duration(milliseconds: 2000),
             repeatPauseDuration: const Duration(milliseconds: 100),
@@ -148,10 +148,11 @@ class _SpeechScreenState extends State<SpeechScreen> {
               onPressed: _listen,
               child: Icon(_isListening ? Icons.mic : Icons.mic_none),
               foregroundColor: Colors.white,
+              backgroundColor: Colors.orange,
             ),
           ),
           AvatarGlow(
-            glowColor: Theme.of(context).primaryColor,
+            glowColor: Colors.orange,
             endRadius: 55.0,
             duration: const Duration(milliseconds: 2000),
             repeatPauseDuration: const Duration(milliseconds: 100),
@@ -161,11 +162,12 @@ class _SpeechScreenState extends State<SpeechScreen> {
                 _showInputDialog(context);
               },
               child: const Icon(Icons.text_fields),
+              backgroundColor: Colors.orange,
               foregroundColor: Colors.white,
             ),
           ),
           AvatarGlow(
-            glowColor: Theme.of(context).primaryColor,
+            glowColor: Colors.orange,
             endRadius: 55.0,
             duration: const Duration(milliseconds: 2000),
             repeatPauseDuration: const Duration(milliseconds: 100),
@@ -179,6 +181,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
               ),
               foregroundColor: Colors.white,
+              backgroundColor: Colors.orange,
             ),
           ),
         ],

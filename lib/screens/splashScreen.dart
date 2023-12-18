@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:signify/screens/learn_screen.dart';
 import 'package:signify/screens/speechToSign.dart';
 import 'dart:async';
 
@@ -105,7 +106,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                            Theme.of(context).primaryColor,
+                              Colors.orange,
                           ),
                           foregroundColor: MaterialStateProperty.all<Color>(
                             Colors.white,
@@ -121,19 +122,14 @@ class _SplashScreenState extends State<SplashScreen> {
                       ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                            Theme.of(context).primaryColor,
+                              Colors.orange,
                           ),
                           foregroundColor: MaterialStateProperty.all<Color>(
                             Colors.white,
                           ),
                         ),
                         onPressed: () {
-                          const snackBar = SnackBar(
-                            content: Text('Work Under Progress'),
-                            duration: Duration(seconds: 2),
-                          );
-
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const LearnSign()));
                         },
                         child: const SizedBox(
                             width: 60,

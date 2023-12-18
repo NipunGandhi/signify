@@ -23,6 +23,7 @@ class _MorseCodeScreenState extends State<MorseCodeScreen> {
   bool wordEnd = false;
   bool space = false;
   late AudioPlayer player;
+  String input = "Input";
   late AudioCache cache;
 
   @override
@@ -52,6 +53,7 @@ class _MorseCodeScreenState extends State<MorseCodeScreen> {
               child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
+                input = controller.text;
                 translation(controller.text);
               },
             ),
@@ -125,6 +127,38 @@ class _MorseCodeScreenState extends State<MorseCodeScreen> {
                   child: SizedBox(
                     height: 0.04 * MediaQuery.of(context).size.height,
                     child: Text(
+                      input,
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const Divider(
+                thickness: 2,
+                color: Colors.orange,
+                indent: 20,
+                endIndent: 20,
+              ),
+
+              const Divider(
+                thickness: 2,
+                color: Colors.orange,
+                indent: 20,
+                endIndent: 20,
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
+                child: SingleChildScrollView(
+                  reverse: true,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  child: SizedBox(
+                    height: 0.04 * MediaQuery.of(context).size.height,
+                    child: Text(
                       _displaytext,
                       style: const TextStyle(
                         fontSize: 20.0,
@@ -171,6 +205,7 @@ class _MorseCodeScreenState extends State<MorseCodeScreen> {
               onPressed: _listen,
               child: Icon(_isListening ? Icons.done : Icons.mic_none),
               foregroundColor: Colors.white,
+              backgroundColor: Colors.orange,
             ),
           ),
           AvatarGlow(
@@ -185,6 +220,7 @@ class _MorseCodeScreenState extends State<MorseCodeScreen> {
               },
               child: const Icon(Icons.text_fields),
               foregroundColor: Colors.white,
+              backgroundColor: Colors.orange,
             ),
           ),
           AvatarGlow(
@@ -205,6 +241,7 @@ class _MorseCodeScreenState extends State<MorseCodeScreen> {
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
               ),
               foregroundColor: Colors.white,
+              backgroundColor: Colors.orange,
             ),
           ),
         ],
@@ -230,6 +267,7 @@ class _MorseCodeScreenState extends State<MorseCodeScreen> {
     } else {
       setState(() => _isListening = false);
       _speech.stop();
+      input = _text;
       translation(_text);
     }
   }
